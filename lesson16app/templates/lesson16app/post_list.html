@@ -1,0 +1,23 @@
+{% extends 'lesson16app/base.html' %}
+
+{% block title %}
+Post List
+{% endblock %}
+
+{% block content %}
+    <h1>Post List</h1>
+
+    {% for post in post_list %}
+        <p>{{ post.title }}</p>
+        <img src="{{ post.image.url }}">
+        {% if post.video %}
+            <video width="300px" height="300px" controls>
+                <source src="media/{{ post.video }}" type="video/mp4">
+            </video>
+        {% endif %}
+        {% if post.audio %}
+            <audio src="{{ post.audio.url }}" controls></audio>
+        {% endif %}
+    {% endfor %}
+
+{% endblock content %}
